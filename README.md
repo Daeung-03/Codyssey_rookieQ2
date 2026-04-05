@@ -67,6 +67,7 @@
 1. Git 푸시 전략 & 레포 관리 전략
 브랜치 전략 (기능별 브랜치)
 
+```
 main
 ├── feat/quiz-class        → Quiz 클래스 구현
 ├── feat/quiz_game-class   → quiz_game 클래스 구현
@@ -74,6 +75,7 @@ main
 ├── feat/add-quiz          → 퀴즈 추가 기능
 ├── feat/file-io           → JSON 저장/불러오기
 └── docs/readme            → README.md 완성
+```
 
 커밋 메시지는 type: 설명 형식으로 통일합니다.
 
@@ -173,6 +175,16 @@ quiz-game/
         ├── menu.py           # 메뉴 출력·화면 렌더링
         └── input_handler.py  # 입력 수집·유효성 검사·예외 처리
 ```
+
+| 파일 | 클래스 | 메소드 |
+|------|--------|--------|
+| models/quiz.py | Quiz | `display()`, `check_answer()` |
+| models/quiz_game.py | QuizGame | `show_menu()`, `play_quiz()`, `add_quiz()`, `show_list()`, `check_score()`, `save()`, `load()` |
+| repository/storage.py | Storage | `save()`, `load()` |
+| services/quzi_service.py | QuizService | `play()`, `add()`, `list_quizzes()` |
+| services/score_service.py | ScoreService | `get_best_score()`, `update_score()` |
+| ui/menu.py | Menu | `show_main_menu()`, `show_quiz_list()`, `show_result()`, `show_best_score()` |
+| ui/input_handler.py | InputHandler | `get_menu_choice()`, `get_answer()`, `get_quiz_input()` |
 
 ---
 
