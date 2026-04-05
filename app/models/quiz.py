@@ -1,0 +1,11 @@
+class Quiz:
+    def __init__(self, question: str, choices: list, answer: int):
+        self.question = question
+        self.choices = choices
+        self.answer = answer
+
+    def display(self):
+        pass
+
+    def check_answer(self, user_answer: int) -> bool:
+        pass
