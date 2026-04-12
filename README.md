@@ -12,7 +12,7 @@
 
 ## 퀴즈 주제 선정 이유
 
-> 작성전
+> 본 프로젝트의 전반적인 구조를 이해하고 객체지향(OOP) 원칙의 적용에 집중하기 위해, 파이썬 기본 문법과 OOP 기초 개념을 묻는 퀴즈를 기본 주제로 선정했습니다. 이를 통해 코드를 작성하면서 자연스럽게 주제와 관련된 파이썬 핵심 내용과 구조 설계를 복습할 수 있었습니다.
 
 ---
 
@@ -89,43 +89,36 @@ main 브랜치는 항상 동작하는 상태를 유지, 기능 개발은 feat/* 
 ---
 
 ### 3. 필수 개념 학습 및 정리
-> 실습을 바탕으로 다음 질문에 대한 답을 작성한다.
+> 프로젝트 코드를 기반으로 필수 개념을 정리했습니다.
 
-1. Python 기초
+**1. Python 기초**
+- **변수와 자료형**: `str`(문제 문자열), `list`(선택지), `int`(정답 번호) 등을 사용하여 데이터를 관리했습니다. 
+- **조건문 / 반복문**: 정답 판별엔 `if`(`self.answer == user_answer`)를, 선택지 출력엔 `for i, choice in enumerate(self.choices)`를 사용했습니다.
 
-변수와 자료형 (int, str, bool, list, dict)
+**2. 객체지향 프로그래밍 (OOP)**
+- **클래스와 객체, 왜 쓰는가?**: 데이터(상태)와 기능(메서드)을 하나의 단위로 묶어 관리하기 위함입니다.
+- **`__init__`과 `self`**:
+  ```python
+  class Quiz:
+      def __init__(self, question: str, choices: list, answer: int):
+          self.question = question  # 인스턴스 초기 상태 설정
+  ```
+- **속성과 메서드**: `Quiz` 클래스의 속성은 `self.question`, `self.answer` 등이며, 메서드는 `display()`, `check_answer()` 등으로 데이터를 다룹니다.
 
-조건문 (if / elif / else)
+**3. 파일 입출력 & 예외 처리**
+- **JSON, 왜 쓰는가?**: 딕셔너리와 구조가 유사하여 직렬화/역직렬화가 쉬우며 프로그램 종료 후에도 데이터를 영구 보존(영속성)할 수 있습니다.
+- **예외 처리 패턴**:
+  ```python
+  def load(self) -> dict:
+      try:
+          with open(self.filepath, 'r', encoding='utf-8') as f:
+              return json.load(f)
+      except (json.JSONDecodeError, OSError): # 파일 손상 및 읽기 오류 대응
+          return {}
+  ```
 
-반복문 (for vs while 차이 및 선택 기준)
-
-함수 정의, 매개변수, 반환값
-
-2. 객체지향 프로그래밍
-
-클래스와 객체 개념, 왜 쓰는가
-
-__init__과 self의 역할
-
-속성(attribute)과 메서드(method)
-
-3. 파일 입출력 & 예외 처리
-
-파일 open / read / write 기본
-
-JSON 형식이란, 왜 데이터 저장에 쓰는가
-
-try / except 오류 처리 패턴
-
-4. Git & GitHub 기초
-
-Git이 왜 필요한가 (버전 관리의 목적)
-
-핵심 명령어: init, add, commit, push, pull, clone, checkout
-
-브랜치 생성 및 병합 (merge)
-
-원격 저장소 활용 (clone, pull 실습)
+**4. Git & GitHub 기초**
+Git을 통해 변경 이력을 관리하며 버그 발생 시 쉽게 코드를 추적하고 되돌릴 수 있었습니다. (본 프로젝트에서는 기능별 브랜치를 생성하여 `merge`, `checkout`을 적극 활용했습니다.)
 
 ### 4. 트러블 슈팅 및 회고
 
