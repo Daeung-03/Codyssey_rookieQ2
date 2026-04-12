@@ -17,7 +17,8 @@ def main():
         choice = input_handler.get_menu_choice()
 
         if choice == 1:
-            quiz_service.play()
+            score, total = quiz_service.play()
+            score_service.update_score(score, total)
         elif choice == 2:
             quiz_service.add()
         elif choice == 3:

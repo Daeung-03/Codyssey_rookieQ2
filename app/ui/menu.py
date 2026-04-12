@@ -18,8 +18,18 @@ class Menu:
     def show_result(self, score: int, total: int):
         print(f"\n최종 점수: {score} / {total}")
 
-    def show_best_score(self, best_score: int):
+    def show_best_score(self, best_score: int, history: list):
         print(f"\n역대 최고 점수: {best_score}점")
+        if not history:
+            print("아직 플레이 기록이 없습니다.")
+            return
+
+        print("\n전체 게임 기록")
+        for i, record in enumerate(history, start=1):
+            played_at = record.get('played_at', '-')
+            total_questions = record.get('total_questions', 0)
+            score = record.get('score', 0)
+            print(f"  {i}. {played_at} | 푼 문제 수: {total_questions} | 점수: {score}")
 
     def show_correct(self):
         print("정답입니다!")

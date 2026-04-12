@@ -19,7 +19,9 @@ class QuizGame:
             self.best_score = score
 
     def save(self):
+        existing_data = self._storage.load()
         data = {
+            **existing_data,
             'best_score': self.best_score,
             'quizzes': [
                 {

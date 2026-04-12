@@ -65,10 +65,10 @@ class QuizService:
                 self.game.add_quiz(q['question'], q['choices'], q['answer'])
             self.game.save()
 
-    def play(self) -> int:
+    def play(self) -> tuple[int, int]:
         if not self.game.quizzes:
             self.menu.show_no_quizzes()
-            return 0
+            return 0, 0
 
         score = 0
         for quiz in self.game.quizzes:
@@ -80,10 +80,9 @@ class QuizService:
             else:
                 self.menu.show_wrong(quiz.answer)
 
-        self.menu.show_result(score, len(self.game.quizzes))
-        self.game.update_best_score(score)
-        self.game.save()
-        return score
+        total = len(self.game.quizzes)
+        self.menu.show_result(score, total)
+        return score, total
 
     def add(self):
         data = self.input_handler.get_quiz_input()
