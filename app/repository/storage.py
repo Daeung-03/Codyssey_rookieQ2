@@ -13,5 +13,8 @@ class Storage:
     def load(self) -> dict:
         if not os.path.exists(self.filepath):
             return {}
-        with open(self.filepath, 'r', encoding='utf-8') as f:
-            return json.load(f)
+        try:
+            with open(self.filepath, 'r', encoding='utf-8') as f:
+                return json.load(f)
+        except (json.JSONDecodeError, OSError):
+            return {}
