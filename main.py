@@ -4,9 +4,10 @@ from app.services.score_service import ScoreService
 from app.ui.menu import Menu
 from app.ui.input_handler import InputHandler
 
+game = QuizGame()
 
 def main():
-    game = QuizGame()
+    
     menu = Menu()
     input_handler = InputHandler()
     quiz_service = QuizService(game, menu, input_handler)
@@ -32,4 +33,8 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except (KeyboardInterrupt, EOFError):
+        game.save()
+        print("\n프로그램이 종료되었습니다.")
