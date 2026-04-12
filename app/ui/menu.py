@@ -20,3 +20,18 @@ class Menu:
 
     def show_best_score(self, best_score: int):
         print(f"\n역대 최고 점수: {best_score}점")
+
+    def show_correct(self):
+        print("정답입니다!")
+
+    def show_wrong(self, correct_answer: int):
+        print(f"오답입니다. 정답은 {correct_answer}번입니다.")
+
+    def show_no_quizzes(self):
+        print("퀴즈가 없습니다. 먼저 퀴즈를 추가하세요.")
+
+    def show_quiz_added(self):
+        print("퀴즈가 추가되었습니다.")
+
+    def show_new_best(self):
+        print("새로운 최고 점수입니다!")
