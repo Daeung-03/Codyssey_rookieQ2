@@ -30,7 +30,10 @@ class QuizGame:
                 for q in self.quizzes
             ]
         }
-        self._storage.save(data)
+        try:
+            self._storage.save(data)
+        except OSError as e:
+            print(f"저장 실패: {e}")
 
     def load(self):
         data = self._storage.load()
