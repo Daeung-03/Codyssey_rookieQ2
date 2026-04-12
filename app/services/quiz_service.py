@@ -81,7 +81,7 @@ class QuizService:
                 self.menu.show_wrong(quiz.answer)
 
         self.menu.show_result(score, len(self.game.quizzes))
-        self.game.update_max_score(score)
+        self.game.update_best_score(score)
         self.game.save()
         return score
 
